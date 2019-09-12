@@ -1,0 +1,19 @@
+
+---
+spring :
+  jmx:
+    enabled: false
+  application:
+    name: authNGateway
+
+  sleuth:
+    sampler:
+      percentage:100
+
+server:
+  servlet.context-path: /authn
+  port: 8080
+
+
+
+
