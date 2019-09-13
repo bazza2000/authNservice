@@ -32,7 +32,7 @@ pipeline {
     }
   }
   environment {
-    SERVICE_URL = 'docker.viosysyems.com'
+    SERVICE_URL = 'docker.viosystems.com'
     SERVICE_PORT = '8443'
     APP_NAME = 'authnservice'
     GITHUB_ASH_CREDS  = credentials('jenkins-user-for-nexus-repository')
