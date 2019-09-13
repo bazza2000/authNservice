@@ -17,7 +17,7 @@ public class DemoController {
     public @ResponseBody
     UserProfile getPayload(HttpServletRequest servletRequest, @RequestBody LoginPayload loginPayload) {
             log.info("returning profile data for " + loginPayload.getUsername());
-            return UserProfile.builder().firstName("Jim").surname("Lack").build();
+            return UserProfile.builder().firstName("Jim").surname("Lack").email("jlack35@gmail.com").username(loginPayload.getUsername()).build();
     }
 
 }
