@@ -15,10 +15,9 @@ public class DemoController {
     @EndpointIdentifier(id="JIRA-104")
     @PostMapping(value = "/login")
     public @ResponseBody
-    DemoPayload getPayload(HttpServletRequest servletRequest, @RequestBody LoginPayload loginPayload) {
-            log.info("innit to winnit ");
-            return DemoPayload.builder().one("Hello").two("World").build();
-
+    UserProfile getPayload(HttpServletRequest servletRequest, @RequestBody LoginPayload loginPayload) {
+            log.info("returning profile data for " + loginPayload.getUsername());
+            return UserProfile.builder().firstName("Jim").surname("Lack").build();
     }
 
 }
