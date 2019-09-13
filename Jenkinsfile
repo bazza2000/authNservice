@@ -10,7 +10,7 @@ pipeline {
 
       }
       steps {
-        sh 'mvn -B -DskipTests clean package sonar:sonar -Dsonar.host.url=http://sonarqube:9000'
+        sh 'mvn -B -DskipTests clean -s maven-settings.xml -Dsettings.security=settings-security.xml package sonar:sonar -Dsonar.host.url=http://sonarqube:9000 -Dmaven.wagon.http.ssl.insecure=true -Dmaven.wagon.http.ssl.allowall=true -Dmaven.wagon.http.ssl.ignore.validity.dates=true'
         sh 'cp -rp target /artifacts'
         archiveArtifacts(artifacts: 'target/*.jar', fingerprint: true)
       }

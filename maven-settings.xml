@@ -8,18 +8,18 @@
   <servers>
     <server>
       <id>nexus-snapshots</id>
-      <username>jenkins</username>
-      <password>{bQSLdtQOATgHHXt4i4GR27EG1biQ8Rladcmmswo7xnUMRN4469b7trf+4NkGK5jm}</password>
+      <username>upn106</username>
+      <password>{l8NBYk78yxsHHDsnLnAn7cM/30xvr+u1L40w23qTsRw=}</password>
     </server>
     <server>
       <id>nexus-releases</id>
-      <username>jenkins</username>
-      <password>{bQSLdtQOATgHHXt4i4GR27EG1biQ8Rladcmmswo7xnUMRN4469b7trf+4NkGK5jm}</password>
+      <username>upn106</username>
+      <password>{l8NBYk78yxsHHDsnLnAn7cM/30xvr+u1L40w23qTsRw=}</password>
     </server>
     <server>
       <id>docker-hub</id>
-      <username>jenkins</username>
-      <password>{zFhShyuKcZoHY4BeIAwCKu+lzQI4dcFn0EWUYrpskDa5Af4A+jAB7xrEcnSMJgUq}</password>
+      <username>upn106</username>
+      <password>{l8NBYk78yxsHHDsnLnAn7cM/30xvr+u1L40w23qTsRw=}</password>
     </server>
   </servers>
 
@@ -27,7 +27,7 @@
     <mirror>
       <id>central</id>
       <name>central</name>
-      <url>https://nexus.mgmt.co-test.cloud:9443/repository/maven-group/</url>
+      <url>https://docker.viosystems.com:9443/repository/maven-group/</url>
       <mirrorOf>*</mirrorOf>
     </mirror>
   </mirrors>
@@ -43,7 +43,7 @@
             <properties>
                 <!-- Optional URL to server. Default value is http://localhost:9000 -->
                 <sonar.host.url>
-                  http://sonar.mgmt.co-test.cloud:9000
+                  http://sonarqube:9000
                 </sonar.host.url>
             </properties>
         </profile>

@@ -19,16 +19,16 @@
         <jacoco.version>0.8.3</jacoco.version>
         <spring-cloud.version>Greenwich.SR2</spring-cloud.version>
     </properties>
-<!--     <distributionManagement>
+    <distributionManagement>
         <repository>
             <id>nexus-releases</id>
-            <url>https172.31.37.1839443/repository/maven-releases/</url>
+            <url>https://172.31.37.183:9443/repository/maven-releases/</url>
         </repository>
         <snapshotRepository>
             <id>nexus-snapshots</id>
             <url>https://172.31.37.183:9443/repository/maven-releases/</url>
         </snapshotRepository>
-    </distributionManagement> -->
+    </distributionManagement>
    <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
