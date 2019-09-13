@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xmlns="http://maven.apache.org/SETTINGS/1.1.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemalocation="http://maven.apache.org/settings/1.1.0 http://maven.apache.org/xsd/settings-1.1.0.xsd">
+
+  <localRepository>/m2repo/.m2/repository</localRepository>
+  
+  <servers>
+    <server>
+      <id>nexus-snapshots</id>
+      <username>jenkins</username>
+      <password>{bQSLdtQOATgHHXt4i4GR27EG1biQ8Rladcmmswo7xnUMRN4469b7trf+4NkGK5jm}</password>
+    </server>
+    <server>
+      <id>nexus-releases</id>
+      <username>jenkins</username>
+      <password>{bQSLdtQOATgHHXt4i4GR27EG1biQ8Rladcmmswo7xnUMRN4469b7trf+4NkGK5jm}</password>
+    </server>
+    <server>
+      <id>docker-hub</id>
+      <username>jenkins</username>
+      <password>{zFhShyuKcZoHY4BeIAwCKu+lzQI4dcFn0EWUYrpskDa5Af4A+jAB7xrEcnSMJgUq}</password>
+    </server>
+  </servers>
+
+  <mirrors>
+    <mirror>
+      <id>central</id>
+      <name>central</name>
+      <url>https://nexus.mgmt.co-test.cloud:9443/repository/maven-group/</url>
+      <mirrorOf>*</mirrorOf>
+    </mirror>
+  </mirrors>
+    <pluginGroups>
+        <pluginGroup>org.sonarsource.scanner.maven</pluginGroup>
+    </pluginGroups>
+    <profiles>
+        <profile>
+            <id>sonar</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <!-- Optional URL to server. Default value is http://localhost:9000 -->
+                <sonar.host.url>
+                  http://sonar.mgmt.co-test.cloud:9000
+                </sonar.host.url>
+            </properties>
+        </profile>
+     </profiles>
+</settings>
