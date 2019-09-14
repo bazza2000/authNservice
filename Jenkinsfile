@@ -14,11 +14,6 @@ pipeline {
         sh 'cp -rp target /artifacts'
         archiveArtifacts(artifacts: 'target/*.jar', fingerprint: true)
       }
-      post {
-        always {
-            junit 'target/surefire-reports/*.xml'
-        }
-      }
     }
     stage('Containerize') {
       steps {
