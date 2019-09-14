@@ -25,16 +25,6 @@ pipeline {
         sh "/usr/bin/docker push   ${env.SERVICE_URL}:${env.SERVICE_PORT}/${env.APP_NAME}:latest"
       }
     }
-    stage('kube_update') {
-      environment {
-        label = 'minikube'
-      }
-      steps {
-        sh '''cd /root/new
-kubectl apply --force  -f master.yaml
-'''
-      }
-    }
   }
   environment {
     SERVICE_URL = 'docker.viosystems.com'
@@ -50,7 +40,7 @@ kubectl apply --force  -f master.yaml
   }
   triggers {
     GenericTrigger(genericVariables: [
-              [key: 'ref', value: '$.ref']
-            ], causeString: 'Triggered on $ref', token: 'authNservice', printContributedVariables: true, printPostContent: true, silentResponse: false)
+                    [key: 'ref', value: '$.ref']
+                  ], causeString: 'Triggered on $ref', token: 'authNservice', printContributedVariables: true, printPostContent: true, silentResponse: false)
     }
   }
