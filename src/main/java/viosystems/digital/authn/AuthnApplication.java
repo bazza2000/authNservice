@@ -1,4 +1,4 @@
-package viosystems.digital.demo;
+package viosystems.digital.authn;
 
 
 import org.springframework.boot.SpringApplication;
@@ -15,7 +15,7 @@ import java.util.Arrays;
 import java.util.Collections;
 
 @SpringBootApplication
-public class DemoApplication {
+public class AuthnApplication {
 
     @Bean
     public FilterRegistrationBean<CorsFilter> initCorsFilter() {
@@ -33,7 +33,7 @@ public class DemoApplication {
     }
 
     public static void main(String[] args) {
-        SpringApplication.run(DemoApplication.class, args);
+        SpringApplication.run(AuthnApplication.class, args);
     }
 
     @Bean

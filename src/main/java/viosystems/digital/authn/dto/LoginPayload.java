@@ -1,4 +1,4 @@
-package viosystems.digital.demo;
+package viosystems.digital.authn.dto;
 
 import lombok.Builder;
 import lombok.Getter;

@@ -6,9 +6,6 @@ spring :
   application:
     name: authNGateway
 
-  sleuth:
-    sampler:
-      percentage:100
 
 server:
   servlet.context-path: /authn
