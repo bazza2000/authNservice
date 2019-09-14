@@ -10,7 +10,7 @@ pipeline {
 
       }
       steps {
-        sh 'mvn -B -DskipTests clean package sonar:sonar -Dsonar.host.url=http://sonarqube:9000'
+        sh 'mvn -B clean package sonar:sonar -Dsonar.host.url=http://sonarqube:9000'
         sh 'cp -rp target /artifacts'
         archiveArtifacts(artifacts: 'target/*.jar', fingerprint: true)
       }
