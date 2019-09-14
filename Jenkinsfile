@@ -1,28 +1,5 @@
 pipeline {
   agent any
-  options {
-    timeout(time: 1, unit: 'HOURS')
-    disableConcurrentBuilds()
-    buildDiscarder(logRotator(daysToKeepStr: '30', numToKeepStr: '10', artifactDaysToKeepStr: '30', artifactNumToKeepStr: '10'))
-    timestamps()
-  }
-  triggers {
-    GenericTrigger(
-      genericVariables: [
-        [key: 'ref', value: '$.ref']
-      ],
-
-      causeString: 'Triggered on $ref',
-
-      token: 'authNservice',
-
-      printContributedVariables: true,
-
-      printPostContent: true,
-
-      silentResponse: false,
-    )
-  }
   stages {
     stage('Build') {
       agent {
@@ -37,15 +14,10 @@ pipeline {
         sh 'cp -rp target /artifacts'
         archiveArtifacts(artifacts: 'target/*.jar', fingerprint: true)
       }
- //     post {
- //       always {
- //           junit 'target/surefire-reports/*.xml'
- //       }
- //     }
     }
     stage('Containerize') {
       steps {
-        sh "cp -rp /artifacts/target ." 
+        sh 'cp -rp /artifacts/target .'
         sh "/usr/bin/docker build -t  ${env.SERVICE_URL}:${env.SERVICE_PORT}/${env.APP_NAME}:${env.BUILD_ID} . "
         sh "/usr/bin/docker login  ${env.SERVICE_URL}:${env.SERVICE_PORT} -u ${GITHUB_ASH_CREDS_USR} -p ${GITHUB_ASH_CREDS_PSW}"
         sh "/usr/bin/docker push   ${env.SERVICE_URL}:${env.SERVICE_PORT}/${env.APP_NAME}:${BUILD_NUMBER}"
@@ -53,11 +25,32 @@ pipeline {
         sh "/usr/bin/docker push   ${env.SERVICE_URL}:${env.SERVICE_PORT}/${env.APP_NAME}:latest"
       }
     }
+    stage('kube_update') {
+      environment {
+        label = 'minikube'
+      }
+      steps {
+        sh '''cd /root/new
+kubectl apply --force  -f master.yaml
+'''
+      }
+    }
   }
   environment {
     SERVICE_URL = 'docker.viosystems.com'
     SERVICE_PORT = '8443'
     APP_NAME = 'authnservice'
-    GITHUB_ASH_CREDS  = credentials('jenkins-user-for-nexus-repository')
+    GITHUB_ASH_CREDS = credentials('jenkins-user-for-nexus-repository')
   }
-}
+  options {
+    timeout(time: 1, unit: 'HOURS')
+    disableConcurrentBuilds()
+    buildDiscarder(logRotator(daysToKeepStr: '30', numToKeepStr: '10', artifactDaysToKeepStr: '30', artifactNumToKeepStr: '10'))
+    timestamps()
+  }
+  triggers {
+    GenericTrigger(genericVariables: [
+              [key: 'ref', value: '$.ref']
+            ], causeString: 'Triggered on $ref', token: 'authNservice', printContributedVariables: true, printPostContent: true, silentResponse: false)
+    }
+  }
