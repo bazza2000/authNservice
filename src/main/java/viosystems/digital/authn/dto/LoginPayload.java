@@ -8,7 +8,7 @@ import lombok.Setter;
 @Setter
 @Builder
 public class LoginPayload {
-    private String Username;
-    private String Password;
-    private String JourneyId;
+    private String username;
+    private String password;
+    private String journeyId;
 }

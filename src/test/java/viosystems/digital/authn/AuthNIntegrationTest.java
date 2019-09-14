@@ -50,7 +50,7 @@ public class AuthNIntegrationTest {
     @Test
     public void shouldReturnAProfileFromLogin() throws URISyntaxException {
         final  URI uri  = new URI("http://localhost:"+ randomServerPort +"/authn/login");
-        LoginPayload loginPayload = LoginPayload.builder().Username(USERNAME).build();
+        LoginPayload loginPayload = LoginPayload.builder().username(USERNAME).build();
 
 
         HttpEntity<LoginPayload> entity = new HttpEntity<>(loginPayload, createHeaders());
