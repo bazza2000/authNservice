@@ -32,6 +32,10 @@ pipeline {
     APP_NAME = 'authnservice'
     GITHUB_ASH_CREDS = credentials('jenkins-user-for-nexus-repository')
   }
+    post {
+    success {
+      build job: 'minikube_update'
+    }
   options {
     timeout(time: 1, unit: 'HOURS')
     disableConcurrentBuilds()
