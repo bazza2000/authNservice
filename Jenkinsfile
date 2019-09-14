@@ -36,6 +36,7 @@ pipeline {
     success {
       build job: 'minikube_update'
     }
+   }
   options {
     timeout(time: 1, unit: 'HOURS')
     disableConcurrentBuilds()
