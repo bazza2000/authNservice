@@ -39,6 +39,14 @@ pipeline {
         sh 'cd /root/new ; kubectl apply -f master.yaml'
       }
     }
+    stage('Acceptance Test') {
+      agent {
+          label 'slave'
+        }
+      steps {
+        build job: 'AcceptanceTest'
+      }
+    }
   }
   environment {
     SERVICE_URL = 'docker.viosystems.com'
