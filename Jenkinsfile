@@ -40,11 +40,9 @@ pipeline {
       }
     }
     stage('Acceptance Test') {
-      node {
-        paramAValue = "${env.BUILD_ID}"
-        paramBValue = "${env.JOB_NAME}"
-        build job: 'AcceptanceTest', parameters: [[$class: 'StringParameterValue', name: 'ParamA', value: paramAValue], [$class: 'StringParameterValue', name: 'ParamB', value: paramBValue]]
-        }
+      steps {
+          build job: 'AcceptanceTest', parameters: [[$class: 'StringParameterValue', name: 'ParamA', value: "${env.BUILD_ID}"], [$class: 'StringParameterValue', name: 'ParamB', value: "${env.JOB_NAME}"]]
+      }
     }
   }
   environment {
