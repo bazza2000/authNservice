@@ -44,7 +44,9 @@ pipeline {
           label 'slave'
         }
       steps {
-        build job: 'AcceptanceTest'
+        paramAValue = "${env.BUILD_ID}"
+        paramAValue = "${env.JOB_NAME}"
+        build job: 'AcceptanceTest', parameters: [[$class: 'StringParameterValue', name: 'ParamA', value: paramAValue], [$class: 'StringParameterValue', name: 'ParamB', value: paramBValue]
       }
     }
   }
