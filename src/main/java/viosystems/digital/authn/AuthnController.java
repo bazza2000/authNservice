@@ -22,10 +22,10 @@ public class AuthnController {
     @Autowired
     UserRepository userRepository;
 
-    @EndpointIdentifier(id="JIRA-104")
+    @EndpointIdentifier(id="VSD-19")
     @PostMapping(value = "/login")
     public @ResponseBody
-    UserProfileDto getPayload(HttpServletRequest servletRequest, @RequestBody LoginPayload loginPayload) {
+    UserProfileDto loginWithUsernameAndPassword(HttpServletRequest servletRequest, @RequestBody LoginPayload loginPayload) {
         Optional<UserProfile> optionalUserProfile = userRepository.findByUsername(loginPayload.getUsername());
         if(optionalUserProfile.isPresent()) {
             UserProfile userProfile = optionalUserProfile.get();
