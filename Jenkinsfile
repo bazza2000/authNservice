@@ -40,14 +40,11 @@ pipeline {
       }
     }
     stage('Acceptance Test') {
-      agent {
-          label 'slave'
-        }
-      steps {
+      node {
         paramAValue = "${env.BUILD_ID}"
         paramBValue = "${env.JOB_NAME}"
         build job: 'AcceptanceTest', parameters: [[$class: 'StringParameterValue', name: 'ParamA', value: paramAValue], [$class: 'StringParameterValue', name: 'ParamB', value: paramBValue]]
-      }
+        }
     }
   }
   environment {
