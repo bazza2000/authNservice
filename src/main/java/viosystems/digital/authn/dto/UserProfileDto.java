@@ -9,7 +9,7 @@ import lombok.Setter;
 @Builder
 public class UserProfileDto {
     private String firstName;
-    private String surName;
+    private String surname;
     private String email;
     private String username;
 }
