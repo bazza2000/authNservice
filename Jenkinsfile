@@ -5,7 +5,7 @@ pipeline {
       agent {
         docker {
           image 'maven:3.6.1-jdk-8-alpine'
-          args '-v /root/.m2:/root/.m2 -v /root/artifacts:/artifacts --network sonar-qube_default'
+          args '-v /root/.m2:/root/.m2 -v /root/artifacts:/artifacts'
         }
 
       }
