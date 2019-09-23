@@ -12,7 +12,7 @@ pipeline {
       steps {
         sh 'mvn -B clean package sonar:sonar -Dsonar.host.url=http://sonarqube:9000'
         sh 'cp -rp target /artifacts'
-        nexusPolicyEvaluation advancedProperties: '', failBuildOnNetworkError: false, iqApplication: manualApplication('authNservice'), iqStage: 'build', jobCredentialsId: ''
+        nexusPolicyEvaluation advancedProperties: '', failBuildOnNetworkError: false, iqApplication: manualApplication('sandbox-application'), iqStage: 'build', jobCredentialsId: 'jenkins-nexus'
         archiveArtifacts(artifacts: 'target/*.jar', fingerprint: true)
       }
       post {
