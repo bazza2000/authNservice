@@ -48,7 +48,9 @@ pipeline {
           }
         }
         stage('Visual Regression') {
-          build job: 'vio-demo'
+          steps {
+            build job: 'vio-demo'
+          }
         }
       }
     }
