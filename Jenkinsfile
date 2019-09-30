@@ -40,14 +40,16 @@ pipeline {
         sh 'cd /root/new ; kubectl apply -f master.yaml'
       }
     }
-    stage('Acceptance Test') {
-      steps {
-          build job: 'AcceptanceTest', parameters: [[$class: 'StringParameterValue', name: 'ParamA', value: "${env.BUILD_ID}"], [$class: 'StringParameterValue', name: 'ParamB', value: "${env.JOB_NAME}"]]
+    parallel {
+      stage('Acceptance Test') {
+        steps {
+            build job: 'AcceptanceTest', parameters: [[$class: 'StringParameterValue', name: 'ParamA', value: "${env.BUILD_ID}"], [$class: 'StringParameterValue', name: 'ParamB', value: "${env.JOB_NAME}"]]
+        }
       }
-    }
-    stage('Visual Regression') {
-      steps {
-          build job: 'vio-demo'
+      stage('Visual Regression') {
+        steps {
+            build job: 'vio-demo'
+        }
       }
     }
   }
