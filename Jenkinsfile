@@ -45,6 +45,11 @@ pipeline {
           build job: 'AcceptanceTest', parameters: [[$class: 'StringParameterValue', name: 'ParamA', value: "${env.BUILD_ID}"], [$class: 'StringParameterValue', name: 'ParamB', value: "${env.JOB_NAME}"]]
       }
     }
+    stage('Visual Regression') {
+      steps {
+          build job: 'vio-demo'
+      }
+    }
   }
   environment {
     SERVICE_URL = 'docker.viosystems.com'
