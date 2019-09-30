@@ -34,14 +34,14 @@ public class AuthnController {
         }
         else {
             log.info("user not found " + loginPayload.getUsername());
-            return UserProfileDto.builder().firstName("Unknown").surname("Unknown").build();
+            return UserProfileDto.builder().firstName("Unknown").surName("Unknown").build();
         }
     }
 
     private UserProfileDto assembleDto(@RequestBody LoginPayload loginPayload, UserProfile userProfile) {
         return UserProfileDto.builder()
                 .firstName(userProfile.getFirstName())
-                .surname(userProfile.getSurname())
+                .surName(userProfile.getSurname())
                 .email(userProfile.getEmail())
                 .username(userProfile.getUsername()).build();
     }
