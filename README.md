@@ -1,6 +1,7 @@
 # authNservice  VSD-18
 Spring Boot Java App
 
-java -jar -Dport -Dmysqlendpoint 
+To run
+java -jar authNservice-1.0.0.jar 
 
 
