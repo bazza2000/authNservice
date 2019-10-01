@@ -1,10 +1,6 @@
-# authNservice   VSD-17
-React Javascript
+# authNservice  VSD-18
+Spring Boot Java App
 
-run npm install
-
-
-
-
+java -jar -Dport -Dmysqlendpoint 
 
 
