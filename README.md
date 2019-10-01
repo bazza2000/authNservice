@@ -1,5 +1,8 @@
-# authNservice
-test -2 
+# authNservice   VSD-17
+React Javascript
+
+run npm install
+
 
 
 
