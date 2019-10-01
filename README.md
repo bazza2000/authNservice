@@ -1,4 +1,4 @@
-# authNservice  VSD-18
+# AuthNGateway service  VSD-18
 Spring Boot Java App
 
 To run
